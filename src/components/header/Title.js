@@ -1,12 +1,17 @@
-import logo from '../assets/game_store_logo.png'
+import logo from "../../assets/logo.png";
+import "./title.scss";
 
 const Title = () => {
   return (
     <div>
-      <img src={logo} alt="Game Store Logo" width="190" height="134"/>
-      <a className="navbar-brand" href="#">
-        Game Shop
-      </a>
+      <img
+        src={logo}
+        alt="Game Store Logo"
+        width="70"
+        height="55"
+        className="logo"
+      />
+
       <button
         className="navbar-toggler"
         type="button"
