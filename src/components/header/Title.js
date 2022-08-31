@@ -1,11 +1,10 @@
-import logo from "../../assets/logo.png";
 import "./title.scss";
 
 const Title = () => {
   return (
     <div>
       <img
-        src={logo}
+        src="./assets/logo.png"
         alt="Game Store Logo"
         width="70"
         height="55"

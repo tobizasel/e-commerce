@@ -1,0 +1,71 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu&display=swap");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.btn-outline-primary,
+.btn-outline-primary:hover,
+.btn-outline-primary:active,
+.btn-outline-primary:visited,
+.btn-outline-primary:focus {
+  border-color: #9c00cc;
+  color: #9c00cc;
+}
+
+.btn-outline-primary:hover,
+.btn-outline-primary:active,
+.btn-outline-primary:visited,
+.btn-outline-primary:focus {
+  background-color: #9c00cc;
+  color: #fff;
+}
+
+.contador {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .contador__container {
+    background-color: #f8f9fa;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .contador__titulo {
+      padding: 20px;
+      background-color: #9c00cc;
+      margin-bottom: 0;
+      color: #fff;
+      font-family: "Ubuntu", sans-serif;
+      border-top-left-radius: 15px;
+      border-top-right-radius: 15px;
+    }
+
+    .contador__contador {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 50px 0;
+
+      .contador__iconos {
+        font-size: 2.2rem;
+        border: none;
+        background: none;
+      }
+
+      .contador__cuenta {
+        font-size: 2.2rem;
+        margin: 0 15px;
+      }
+    }
+
+    .contador__boton {
+      margin: 15px;
+    }
+  }
+}
