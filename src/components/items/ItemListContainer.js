@@ -1,59 +1,14 @@
 import React from "react";
 import ItemList from "./ItemList";
 import { useEffect, useState } from "react";
-
-const productos = [
-  {
-    id: 1,
-    nombre: "Star Wars: Jedi Fallen Order",
-    precio: 1500,
-    desarrolladores: "Respawn Entertainment",
-    img: "./assets/fallen-order.webp",
-    stock: 5,
-  },
-  {
-    id: 2,
-    nombre: "Elden Ring",
-    precio: 2200,
-    desarrolladores: "FromSoftware",
-    img: "./assets/elden-ring.webp",
-    stock: 1,
-  },
-  {
-    id: 3,
-    nombre: "God of War",
-    precio: 4400,
-    desarrolladores: "SCE Santa Monica Studio",
-    img: "./assets/god-of-war.jfif",
-    stock: 7,
-  },
-  {
-    id: 4,
-    nombre: "Multiversus",
-    precio: 0,
-    desarrolladores: "Player First Games",
-    img: "./assets/multiversus.jpg",
-    stock: 12,
-  },
-  {
-    id: 5,
-    nombre: "Horizon Zero Dawn",
-    precio: 3800,
-    desarrolladores: "Guerrilla Games",
-    img: "./assets/horizon.webp",
-    stock: 5,
-  },
-  {
-    id: 6,
-    nombre: "Hogwarts: Legacy",
-    precio: 6000,
-    desarrolladores: "Avalanche Software",
-    img: "./assets/hogwarts.jfif",
-    stock: 0,
-  },
-];
+import { Spinner } from "reactstrap";
+import productos from '../products.json'
+import { useNavigate } from "react-router-dom";
 
 const ItemListContainer = () => {
+
+  
+  
   const getDatos = () => {
     return new Promise((resolve) => {
       setTimeout(() => {
@@ -63,16 +18,26 @@ const ItemListContainer = () => {
   };
 
   const [datos, setDatos] = useState([]);
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
+    setLoading(true)
     getDatos()
       .then((res) => setDatos(res))
-      .catch((error) => console.log(error));
+      .catch((error) => console.log(error))
+      .finally(() => {
+        setLoading(false)
+      })
   }, []);
 
   return (
-    <div className="container mt-3">
-      <div className="row">
+    <div className="container mt-5">
+      {
+         loading
+        ? 
+        <div className="row"><Spinner className="mx-auto"/></div>
+        :
+            <div className="row">
         {datos.map((e) => (
           <div className="col-4">
             <ItemList
@@ -85,7 +50,11 @@ const ItemListContainer = () => {
             />
           </div>
         ))}
+        
       </div>
+      }
+
+
     </div>
   );
 };

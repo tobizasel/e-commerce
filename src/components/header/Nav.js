@@ -29,17 +29,17 @@ const Nav = () => {
                 aria-expanded="false"
               >
                 <i className="fa-solid fa-tag"></i>
-                Descuentos
+                Precios:
               </a>
               <ul className="dropdown-menu">
                 <li>
                   <a className="dropdown-item" href="#">
-                    30% OFF
+                    MENOS DE $4000
                   </a>
                 </li>
                 <li>
                   <a className="dropdown-item" href="#">
-                    50% OFF
+                    MENOS DE $2000  
                   </a>
                 </li>
                 <li>
@@ -47,7 +47,7 @@ const Nav = () => {
                 </li>
                 <li>
                   <a className="dropdown-item" href="#">
-                    Juegos Gratis
+                    FREE TO PLAY
                   </a>
                 </li>
               </ul>
