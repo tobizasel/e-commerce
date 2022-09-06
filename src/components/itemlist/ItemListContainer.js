@@ -2,7 +2,7 @@ import React from "react";
 import ItemList from "./ItemList";
 import { useEffect, useState } from "react";
 import { Spinner } from "reactstrap";
-import productos from '../products.json'
+import {productos} from '../productos'
 import { useNavigate } from "react-router-dom";
 
 const ItemListContainer = () => {

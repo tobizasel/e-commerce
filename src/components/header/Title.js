@@ -4,7 +4,7 @@ const Title = () => {
   return (
     <div>
       <img
-        src="./assets/logo.png"
+        src="../assets/logo.png"
         alt="Game Store Logo"
         width="70"
         height="55"

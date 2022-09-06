@@ -1,9 +1,9 @@
 import Nav from './components/header/Nav'
-import Contador from './components/items/Contador';
-import ItemListContainer from './components/items/ItemListContainer';
-import ItemDetail, { itemDetail } from "./components/items/ItemDetail";
+import Contador from './components/itemlist/Contador';
+import ItemListContainer from './components/itemlist/ItemListContainer';
 import './components/app.scss';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import ItemDetailContainer from './components/itemdetail/ItemDetailContainer';
 
 function App() {
   return (
@@ -13,7 +13,7 @@ function App() {
         
         <Routes>
           <Route path='/' element = {<ItemListContainer/>}/>
-          <Route path='/detail/:ID' element = {<ItemDetail/>}/>
+          <Route path='/detail/:itemID' element = {<ItemDetailContainer/>}/>
         </Routes>
         
         
