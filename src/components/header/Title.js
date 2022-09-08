@@ -1,8 +1,9 @@
 import "./title.scss";
+import { Link } from "react-router-dom";
 
 const Title = () => {
   return (
-    <div>
+    <Link to='/'>
       <img
         src="../assets/logo.png"
         alt="Game Store Logo"
@@ -22,7 +23,7 @@ const Title = () => {
       >
         <span className="navbar-toggler-icon"></span>
       </button>
-    </div>
+    </Link>
   );
 };
 

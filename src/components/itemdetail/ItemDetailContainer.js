@@ -28,6 +28,8 @@ const ItemDetailContainer = () => {
       });
   }, [itemID, item]);
 
+  
+
   return (
     <>
       {loading ? (

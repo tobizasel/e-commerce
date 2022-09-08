@@ -2,33 +2,33 @@ import React from "react";
 import ItemList from "./ItemList";
 import { useEffect, useState } from "react";
 import { Spinner } from "reactstrap";
-import {productos} from '../productos'
-import { useNavigate } from "react-router-dom";
+import { PedirDatos } from "../helpers/PedirDatos";
+import { useNavigate, useParams } from "react-router-dom";
 
 const ItemListContainer = () => {
 
   
-  
-  const getDatos = () => {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        resolve(productos);
-      }, 1000);
-    });
-  };
-
   const [datos, setDatos] = useState([]);
   const [loading, setLoading] = useState(true)
+  const {precioID} = useParams();
+
+  console.log("parametro:" + precioID);
 
   useEffect(() => {
     setLoading(true)
-    getDatos()
-      .then((res) => setDatos(res))
+    PedirDatos()
+      .then((res) => {
+        if (!precioID) {
+          setDatos(res)
+        } else{
+          setDatos(res.filter ((e) => e.idPrecio === precioID))
+        }
+      })
       .catch((error) => console.log(error))
       .finally(() => {
         setLoading(false)
       })
-  }, []);
+  }, [precioID]);
 
   return (
     <div className="container mt-5">

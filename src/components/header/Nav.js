@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Title from "./Title.js";
 
 const Nav = () => {
@@ -33,22 +34,22 @@ const Nav = () => {
               </a>
               <ul className="dropdown-menu">
                 <li>
-                  <a className="dropdown-item" href="#">
+                  <Link to='/juegos/4000' className="dropdown-item" href="#">
                     MENOS DE $4000
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a className="dropdown-item" href="#">
+                  <Link to='/juegos/2000' className="dropdown-item" href="#">
                     MENOS DE $2000  
-                  </a>
+                  </Link>
                 </li>
                 <li>
                   <hr className="dropdown-divider" />
                 </li>
                 <li>
-                  <a className="dropdown-item" href="#">
+                  <Link to='/juegos/free' className="dropdown-item" href="#">
                     FREE TO PLAY
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </li>
