@@ -40,15 +40,7 @@ const ItemDetailContainer = () => {
         </div>
       ) : (
         <ItemDetail
-          nombre={item.nombre}
-          id={itemID}
-          precio={item.precio}
-          desarrolladores={item.desarrolladores}
-          img={item.img}
-          stock={item.stock}
-          carrusel_1={item.carrusel_1}
-          carrusel_2={item.carrusel_2}
-          carrusel_3={item.carrusel_3}
+          item={item}
         />
       )}
     </>

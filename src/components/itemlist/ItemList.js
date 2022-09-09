@@ -7,10 +7,21 @@ const ItemList = (props) => {
   const {id, nombre, precio, desarrolladores, img, stock} = props;
 
   let navigate = useNavigate();
+  let texto
 
     const handleNavigation = () => {
         navigate(`/detail/${id}`)
     }
+
+    const cambiarTexto = () =>{
+      if (precio === 0) {
+         texto = "GRATIS"
+      } else{
+         texto = `$${precio}`
+      }
+   }
+  
+    cambiarTexto();
 
     return (
 
@@ -34,7 +45,7 @@ const ItemList = (props) => {
       </Button>
     </CardBody>
     <CardFooter>
-      ${precio}
+      {texto}
     </CardFooter>
   </Card>
   )
