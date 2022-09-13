@@ -16,10 +16,14 @@ function App() {
     console.log(cart);
   }
 
+  const isInCart = (id) => {
+    return cart.some((e) => e.id === id)
+  } 
+
 
   return (
 
-    <CartContext.Provider value={{cart, agregarCart}}>
+    <CartContext.Provider value={{cart, agregarCart, isInCart}}>
 
     <BrowserRouter>
         <Nav/>  

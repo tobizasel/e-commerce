@@ -38,6 +38,7 @@ const ItemDetail = ({ item }) => {
       cantidad
     }
     agregarCart(selectedItem)
+    console.log('esta? ' + isInCart(selectedItem.id))
 
   };
 
