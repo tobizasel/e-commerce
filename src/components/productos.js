@@ -17,7 +17,7 @@ export const productos = [{
     idPrecio: '4000',
     desarrolladores: "FromSoftware",
     img: "../assets/elden-ring.webp",
-    stock: 1,
+    stock: 2,
     carrusel_1: "../assets/elden-ring-1.jpg",
     carrusel_2: "../assets/elden-ring-2.jpg",
     carrusel_3: "../assets/elden-ring-3.jpg"

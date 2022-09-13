@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import Title from "./Title.js";
+import './nav.scss'
 
 const Nav = () => {
   return (
@@ -64,8 +65,11 @@ const Nav = () => {
             <button className="btn btn-outline-success" type="submit">
               Buscar
             </button>
+            
           </form>
         </div>
+        <Link to={'/cart'}><i className="fa-solid fa-cart-shopping"></i></Link>
+
       </div>
     </nav>
   );

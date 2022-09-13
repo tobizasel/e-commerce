@@ -1,4 +1,4 @@
-import "./title.scss";
+import "./nav.scss";
 import { Link } from "react-router-dom";
 
 const Title = () => {

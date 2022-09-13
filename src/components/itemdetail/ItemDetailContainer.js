@@ -11,19 +11,15 @@ const ItemDetailContainer = () => {
   const [item, setItem] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  console.log(productos);
-
   useEffect(() => {
     setLoading(true);
 
     PedirDatos()
       .then((res) => {
         setItem(res.find((product) => product.id === Number(itemID)));
-        console.log(item);
       })
       .catch((error) => console.log("error: " + error))
       .finally(() => {
-        console.log(item);
         setLoading(false);
       });
   }, [itemID, item]);

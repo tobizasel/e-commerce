@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button, ButtonGroup } from "reactstrap";
 
-export const Botones = ({cantidad, setCantidad, stock, agregar}) => {
+export const Botones = ({cantidad, setCantidad, stock, agregar, isInCart}) => {
 
     let texto;
 

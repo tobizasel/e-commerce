@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Carrousel from "./Carrousel";
 import { Botones } from "./Botones";
 import { Link } from "react-router-dom";
+import { CartContext } from "../../context/CartContext";
 
 const ItemDetail = ({ item }) => {
   const {
@@ -19,6 +20,8 @@ const ItemDetail = ({ item }) => {
   const [cantidad, setCantidad] = useState(1);
   let texto;
 
+  const {cart, agregarCart, isInCart} = useContext(CartContext)
+
   const cambiarTexto = () => {
     if (precio === 0) {
       texto = "GRATIS";
@@ -28,7 +31,14 @@ const ItemDetail = ({ item }) => {
   };
 
   const handleAdd = () => {
-    console.log({ id,nombre,precio, cantidad });
+    const selectedItem = {
+      id,
+      nombre,
+      precio,
+      cantidad
+    }
+    agregarCart(selectedItem)
+
   };
 
   cambiarTexto();
@@ -51,6 +61,7 @@ const ItemDetail = ({ item }) => {
         setCantidad={setCantidad}
         stock={stock}
         agregar={handleAdd}
+        isInCart={isInCart}
       />
 
       <Link to="/cart" className="btn btn-outline-success">Finalizar la compra</Link>
