@@ -2,13 +2,29 @@
     margin:0 20px;
 }
 
-.fa-cart-shopping{
-    font-size: 1.7rem;
-    margin: 0 30px;
-    cursor: pointer;
+.cartIcon{
+    margin: 0 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    padding: 8px 14px;
+    border-radius: 5px;
+
+    i{
+        font-size: 1rem;
+        margin-right: 6px;
+        transform: translateY(-1.6px);
+    }
+
+    h6{
+        font-size: .8rem;
+        transform: translateY(.5px);
+    }
 
     &:hover{
-        color: #6610f2;
+        background-color: #000;
+        color: #fff;
     }
 }
 

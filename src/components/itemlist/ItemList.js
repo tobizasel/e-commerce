@@ -44,8 +44,8 @@ const ItemList = (props) => {
         Comprar
       </Button>
     </CardBody>
-    <CardFooter>
-      {texto}
+    <CardFooter className="">
+      <b>{texto}</b>
     </CardFooter>
   </Card>
   )

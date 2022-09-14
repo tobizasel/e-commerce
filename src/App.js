@@ -4,13 +4,10 @@ import './components/app.scss';
 import { BrowserRouter, Routes, Route, Link, Navigate } from 'react-router-dom';
 import ItemDetailContainer from './components/itemdetail/ItemDetailContainer';
 import Cart from './components/cart/Cart';
-import { CartProvider } from './context/CartContext'
+import { CartProvider } from './components/context/CartContext'
+import Footer from './components/Footer';
 
 function App() {
-
-
-
-
   return (
 
     <CartProvider>
@@ -26,8 +23,7 @@ function App() {
           <Route path='*' element={<Navigate to='/'/>}></Route>
         </Routes>
         
-        
-        
+        <Footer/>
     </BrowserRouter>
     </CartProvider>
   );

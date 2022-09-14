@@ -1,7 +1,8 @@
 import React, { useContext } from 'react'
-import { CartContext } from '../../context/CartContext'
+import { CartContext } from '../context/CartContext'
 import './cart.scss'
 import CartCard from './CartCard'
+import CarritoVacio from './CarritoVacio'
 
 const Cart = () => {
 
@@ -9,7 +10,7 @@ const Cart = () => {
 
   return (
     <div className='container mt-5 cart'>
-      <h2 className='cart__title'>Tu carrito de compras</h2>
+      <h2 className='cart__title'>CARRITO DE COMPRAS</h2>
 
         {
           cart[0] ?
@@ -21,7 +22,7 @@ const Cart = () => {
           <button className='btn btn-outline-danger mt-5 button__vaciar' onClick={vaciarCarrito}>VACIAR CARRITO</button>
           </div>
           </>
-          : <h2>No flashes</h2>
+          : <CarritoVacio/>
           
         }
         

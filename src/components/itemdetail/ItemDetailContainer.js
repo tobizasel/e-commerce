@@ -22,7 +22,7 @@ const ItemDetailContainer = () => {
       .finally(() => {
         setLoading(false);
       });
-  }, [itemID, item]);
+  }, [item]);
 
   
 
