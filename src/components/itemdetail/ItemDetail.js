@@ -20,8 +20,9 @@ const ItemDetail = ({ item }) => {
   const [cantidad, setCantidad] = useState(1);
   let texto;
 
-  const {cart, agregarCart, isInCart} = useContext(CartContext)
+  const { cart, agregarCart, isInCart } = useContext(CartContext);
 
+    console.log("item detail: " , cart);
   const cambiarTexto = () => {
     if (precio === 0) {
       texto = "GRATIS";
@@ -35,13 +36,13 @@ const ItemDetail = ({ item }) => {
       id,
       nombre,
       precio,
-      cantidad
-    }
-    agregarCart(selectedItem)
-    console.log('esta? ' + isInCart(selectedItem.id))
-
+      cantidad,
+      img
+    };
+    agregarCart(selectedItem);
+    console.log("esta? " + isInCart(selectedItem.id));
   };
-
+  
   cambiarTexto();
 
   return (
@@ -50,6 +51,7 @@ const ItemDetail = ({ item }) => {
         <h2 className="col-10">{nombre}</h2>
         <h2 className="col-2">{texto}</h2>
       </div>
+
       <Carrousel
         className="mt-5"
         foto_1={carrusel_1}
@@ -57,15 +59,15 @@ const ItemDetail = ({ item }) => {
         foto_3={carrusel_3}
       />
 
-      <Botones
-        cantidad={cantidad}
-        setCantidad={setCantidad}
-        stock={stock}
-        agregar={handleAdd}
-        isInCart={isInCart}
-      />
+        <Botones
+          cantidad={cantidad}
+          setCantidad={setCantidad}
+          stock={stock}
+          agregar={handleAdd}
+          isInCart={isInCart(id)} 
+        />
+      
 
-      <Link to="/cart" className="btn btn-outline-success">Finalizar la compra</Link>
     </div>
   );
 };

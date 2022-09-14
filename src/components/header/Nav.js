@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import Title from "./Title.js";
 import './nav.scss'
+import CartIcon from "./CartIcon.js";
 
 const Nav = () => {
   return (
@@ -68,7 +69,7 @@ const Nav = () => {
             
           </form>
         </div>
-        <Link to={'/cart'}><i className="fa-solid fa-cart-shopping"></i></Link>
+        <Link to={'/cart'}><CartIcon/></Link>
 
       </div>
     </nav>
