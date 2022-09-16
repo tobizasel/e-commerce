@@ -4,6 +4,15 @@ import { Button, ButtonGroup } from "reactstrap";
 export const Botones = ({cantidad, setCantidad, stock, agregar, isInCart}) => {
 
     let texto;
+    console.log(stock);
+
+    const isStock = () => {
+      if (stock === 0) {
+        return true
+      } else{
+        return false
+      }
+    }
 
     const handlerRestar = () => {
         if (cantidad > 1) {
@@ -32,9 +41,9 @@ export const Botones = ({cantidad, setCantidad, stock, agregar, isInCart}) => {
 
   return (
     <ButtonGroup className="mt-5">
-    <Button className='btn-outline btn-lg' outline onClick={handlerRestar} disabled ={isInCart}><b>-</b></Button>
-    <Button className='btn-outline btn-lg' outline onClick={agregar} disabled={isInCart}>{texto}</Button>
-    <Button className='btn-outline btn-lg' outline onClick={handlerSumar} disabled  ={isInCart}><b>+</b></Button>
+    <Button className='btn-outline btn-lg' outline onClick={handlerRestar} disabled ={isInCart || isStock()}><b>-</b></Button>
+    <Button className='btn-outline btn-lg' outline onClick={agregar} disabled={isInCart || isStock()}>{texto}</Button>
+    <Button className='btn-outline btn-lg' outline onClick={handlerSumar} disabled  ={isInCart || isStock()}><b>+</b></Button>
     </ButtonGroup>
   )
 }

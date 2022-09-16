@@ -12,6 +12,7 @@ const ItemDetail = ({ item }) => {
     desarrolladores,
     img,
     stock,
+    comprado,
     carrusel_1,
     carrusel_2,
     carrusel_3,
@@ -37,6 +38,7 @@ const ItemDetail = ({ item }) => {
       nombre,
       precio,
       cantidad,
+      comprado,
       img
     };
     agregarCart(selectedItem);

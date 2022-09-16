@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 import { PedirDatos } from "../helpers/PedirDatos";
 import ItemDetail from "./ItemDetail";
 import { Spinner } from "reactstrap";
+import { doc, getDoc } from "firebase/firestore";
+import { db } from '../../firebase/config'
 
 const ItemDetailContainer = () => {
   let { itemID } = useParams();
@@ -14,15 +16,17 @@ const ItemDetailContainer = () => {
   useEffect(() => {
     setLoading(true);
 
-    PedirDatos()
-      .then((res) => {
-        setItem(res.find((product) => product.id === Number(itemID)));
+    const itemRef = doc(db, 'productos', itemID)
+    getDoc(itemRef)
+      .then((doc) => {
+        setItem({id: doc.id, ...doc.data()})
+        console.log("item", item);
       })
-      .catch((error) => console.log("error: " + error))
       .finally(() => {
-        setLoading(false);
-      });
-  }, [item]);
+        setLoading(false)
+      })
+
+  }, []);
 
   
 

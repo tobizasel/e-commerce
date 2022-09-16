@@ -10,51 +10,27 @@ const Nav = () => {
         <Title />
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            <li className="nav-item">
+            <Link to='#' className="nav-item">
               <a className="nav-link active" aria-current="page" href="#">
-              <i className="fa-solid fa-shop"></i>
-                Tienda
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="#">
-              <i className="fa-solid fa-book-blank"></i>
                 Biblioteca
               </a>
-            </li>
-
-            <li className="nav-item dropdown">
-              <a
-                className="nav-link dropdown-toggle"
-                href="#"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                <i className="fa-solid fa-tag"></i>
-                Precios:
+            </Link>
+            <Link to='/accion' className="nav-item">
+              <a className="nav-link active" aria-current="page" href="#">
+                Accion
               </a>
-              <ul className="dropdown-menu">
-                <li>
-                  <Link to='/juegos/4000' className="dropdown-item" href="#">
-                    MENOS DE $4000
-                  </Link>
-                </li>
-                <li>
-                  <Link to='/juegos/2000' className="dropdown-item" href="#">
-                    MENOS DE $2000  
-                  </Link>
-                </li>
-                <li>
-                  <hr className="dropdown-divider" />
-                </li>
-                <li>
-                  <Link to='/juegos/free' className="dropdown-item" href="#">
-                    FREE TO PLAY
-                  </Link>
-                </li>
-              </ul>
-            </li>
+            </Link>
+            <Link to='/aventura' className="nav-item">
+              <a className="nav-link active" aria-current="page" href="#">
+                Aventura
+              </a>
+            </Link>
+            <Link to='/rol' className="nav-item">
+              <a className="nav-link active" aria-current="page" href="#">
+                Rol
+              </a>
+            </Link>
+
           </ul>
           <form className="d-flex" role="search">
             <input

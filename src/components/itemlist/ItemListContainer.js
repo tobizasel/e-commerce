@@ -2,61 +2,56 @@ import React from "react";
 import ItemList from "./ItemList";
 import { useEffect, useState } from "react";
 import { Spinner } from "reactstrap";
-import { PedirDatos } from "../helpers/PedirDatos";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import { collection, getDocs, query, where } from "firebase/firestore";
+import { db } from "../../firebase/config";
+import "./itemlist.scss";
 
 const ItemListContainer = () => {
-
-  
   const [datos, setDatos] = useState([]);
-  const [loading, setLoading] = useState(true)
-  const {precioID} = useParams();
-
-  console.log("parametro:" + precioID);
+  const [loading, setLoading] = useState(true);
+  let { generoId } = useParams();
 
   useEffect(() => {
-    setLoading(true)
-    PedirDatos()
+    setLoading(true);
+
+    const productosRef = collection(db, "productos");
+    const q = generoId ? query(productosRef, where("genero", "==", generoId)) : productosRef
+
+    getDocs(q)
       .then((res) => {
-        if (!precioID) {
-          setDatos(res)
-        } else{
-          setDatos(res.filter ((e) => e.idPrecio === precioID))
-        }
-      })
-      .catch((error) => console.log(error))
-      .finally(() => {
-        setLoading(false)
-      })
-  }, [precioID]);
+        const productosDB = res.docs.map( (doc) => ({id: doc.id, ...doc.data()}) )
+        setDatos(productosDB)
+    })
+      .catch((err) => console.log(err))
+      .finally(() => setLoading(false))
+  }, [generoId]);
+  
 
   return (
-    <div className="container mt-5">
-      {
-         loading
-        ? 
-        <div className="row"><Spinner className="mx-auto"/></div>
-        :
-            <div className="row">
-        {datos.map((e) => (
-          <div className="col-4">
-            <ItemList
-              id={e.id}
-              nombre={e.nombre}
-              precio={e.precio}
-              desarrolladores={e.desarrolladores}
-              img={e.img}
-              stock={e.img}
-            />
-          </div>
-        ))}
-        
-      </div>
-      }
-
-
+    <div className="container list__container mt-5">
+      {loading ? (
+        <div className="row">
+          <Spinner className="mx-auto" />
+        </div>
+      ) : (
+        <div className="row list__container">
+          {datos.map((e) => (
+            <div className="col-4 list__container">
+              <ItemList
+                id={e.id}
+                nombre={e.nombre}
+                precio={e.precio}
+                desarrolladores={e.desarrolladores}
+                img={e.img}
+                stock={e.img}
+              />
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
-};
+}
 
-export default ItemListContainer;
+export default ItemListContainer
