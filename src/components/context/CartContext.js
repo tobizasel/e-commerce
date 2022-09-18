@@ -1,14 +1,17 @@
 import { useState, useEffect, createContext } from "react";
-import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 export const CartContext = createContext();
 
-// const inicial = JSON.parse(localStorage.getItem('carrito')) || [];
+ const inicial = JSON.parse(localStorage.getItem('carrito')) || []
 
 export const CartProvider = ({ children }) => {
-  const [cart, setCart] = useState([]); //inicial
+  const [cart, setCart] = useState(inicial); 
+
+  useEffect(() => {
+    localStorage.setItem('carrito', JSON.stringify(cart))
+  }, [cart])
 
   const agregarCart = (item) => {
     setCart([...cart, item]);
@@ -34,9 +37,7 @@ export const CartProvider = ({ children }) => {
 
   };
 
-  // useEffect(() => {
-  //   localStorage.setItem('carrito', JSON.stringify(cart))
-  // }, [cart])
+
 
   return (
     <CartContext.Provider

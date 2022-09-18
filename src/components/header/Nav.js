@@ -5,12 +5,12 @@ import CartIcon from "./CartIcon.js";
 
 const Nav = () => {
   return (
-    <nav className="navbar navbar-expand-lg bg-light">
+    <nav className="navbar header__nav navbar-expand-lg bg-light">
       <div className="container-fluid">
         <Title />
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            <Link to='#' className="nav-item">
+            <Link to='/library' className="nav-item">
               <a className="nav-link active" aria-current="page" href="#">
                 Biblioteca
               </a>

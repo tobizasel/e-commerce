@@ -37,7 +37,7 @@ const ItemList = (props) => {
       <CardTitle tag="h5">
         {nombre}
       </CardTitle>
-      <CardText>
+      <CardText className='card__text'>
         Desarrollado por: <b>{desarrolladores}</b>
       </CardText>
       <Button onClick={handleNavigation}>

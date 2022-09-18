@@ -1,7 +1,6 @@
 import React, { useContext, useState } from "react";
 import Carrousel from "./Carrousel";
 import { Botones } from "./Botones";
-import { Link } from "react-router-dom";
 import { CartContext } from "../context/CartContext";
 
 const ItemDetail = ({ item }) => {

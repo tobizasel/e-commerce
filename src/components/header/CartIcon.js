@@ -7,10 +7,9 @@ const CartIcon = () => {
   const { cantidadCart } = useContext(CartContext)
 
   return (
-    <div className='cartIcon'>
-      <i className='fa-solid fa-cart-shopping'></i>
-      <h6>cart ({cantidadCart()})</h6>
-    </div>
+    <button className='cartIcon btn btn-outline-dark' outline>
+      <h6><i className='fa-solid fa-cart-shopping'></i>cart ({cantidadCart()})</h6>
+    </button>
   )
 }
 

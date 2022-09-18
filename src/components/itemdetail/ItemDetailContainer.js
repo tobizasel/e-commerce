@@ -1,8 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import { productos } from "../productos";
 import { useEffect, useState } from "react";
-import { PedirDatos } from "../helpers/PedirDatos";
 import ItemDetail from "./ItemDetail";
 import { Spinner } from "reactstrap";
 import { doc, getDoc } from "firebase/firestore";

@@ -5,16 +5,13 @@
 .cartIcon{
     margin: 0 20px;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid black;
-    padding: 8px 14px;
-    border-radius: 5px;
+    flex-direction: row;
+
 
     i{
         font-size: 1rem;
         margin-right: 6px;
-        transform: translateY(-1.6px);
+        transform: translateY(2px);
     }
 
     h6{
@@ -28,3 +25,9 @@
     }
 }
 
+nav{
+    position: fixed;
+    background-color: #000;
+}
+
+// 71px
