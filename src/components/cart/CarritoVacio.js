@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 const CarritoVacio = () => {
   return (
     <div className='container cartVacio'>
-        <img src='./assets/carrito.png' className='cartVacio__imagen'/>
+        <img src='./assets/carrito.png' className='cartVacio__imagen' alt='carrito de compras'/>
         
         <div className='cartVacio__textos'>
             <h4>Tu carrito de compras esta vacio</h4>

@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 
 const ItemList = (props) => {
   
-  const {id, nombre, precio, desarrolladores, img, stock} = props;
+  const {id, nombre, precio, desarrolladores, img} = props;
 
   let navigate = useNavigate();
   let texto
@@ -32,7 +32,7 @@ const ItemList = (props) => {
       height: '520px'
     }}
   >
-    <img src={img} height="300"/>
+    <img src={img} height="300" alt={nombre}/>
     <CardBody>
       <CardTitle tag="h5">
         {nombre}

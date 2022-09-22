@@ -1,4 +1,4 @@
-import { addDoc, collection, doc, getDocs, writeBatch, query, where, documentId  } from "firebase/firestore";
+import { addDoc, collection, getDocs, writeBatch, query, where, documentId  } from "firebase/firestore";
 import { db } from "../../firebase/config";
 import React, { useContext, useState } from "react";
 import { CartContext } from "../context/CartContext";
@@ -34,7 +34,7 @@ const Checkout = () => {
     const compraRef = collection(db, "compras");
     const productosRef = collection(db, 'productos')
     const batch = writeBatch(db)
-    const fecha = new Date;
+    const fecha = new Date();
     const q = query(productosRef,where(documentId(), 'in', cart.map(item => item.id)))
 
     const productos = await getDocs(q)

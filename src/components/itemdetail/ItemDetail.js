@@ -9,7 +9,6 @@ const ItemDetail = ({ item }) => {
     nombre,
     id,
     precio,
-    desarrolladores,
     img,
     stock,
     comprado,
@@ -21,7 +20,7 @@ const ItemDetail = ({ item }) => {
   const [cantidad, setCantidad] = useState(1);
   let texto;
 
-  const { cart, agregarCart, isInCart } = useContext(CartContext);
+  const {agregarCart, isInCart } = useContext(CartContext);
 
   const cambiarTexto = () => {
     if (precio === 0) {

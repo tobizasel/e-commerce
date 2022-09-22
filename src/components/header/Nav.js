@@ -11,24 +11,24 @@ const Nav = () => {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <Link to='/library' className="nav-item">
-              <a className="nav-link active" aria-current="page" href="#">
+              <div className="nav-link active" aria-current="page" href="#">
                 Biblioteca
-              </a>
+              </div>
             </Link>
             <Link to='/accion' className="nav-item">
-              <a className="nav-link active" aria-current="page" href="#">
+              <div className="nav-link active" aria-current="page" href="#">
                 Accion
-              </a>
+              </div>
             </Link>
             <Link to='/aventura' className="nav-item">
-              <a className="nav-link active" aria-current="page" href="#">
+              <div className="nav-link active" aria-current="page" href="#">
                 Aventura
-              </a>
+              </div>
             </Link>
             <Link to='/rol' className="nav-item">
-              <a className="nav-link active" aria-current="page" href="#">
+              <div className="nav-link active" aria-current="page" href="#">
                 Rol
-              </a>
+              </div>
             </Link>
 
           </ul>
