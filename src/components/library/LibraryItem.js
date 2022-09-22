@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Card, CardImg, CardBody, CardTitle, CardText } from "reactstrap";
 
 

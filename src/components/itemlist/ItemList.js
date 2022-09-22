@@ -1,6 +1,6 @@
 import React from 'react'
 import { Card, CardBody, CardText, CardTitle, CardFooter, Button } from 'reactstrap'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 const ItemList = (props) => {
   

@@ -3,7 +3,7 @@ import { db } from "../../firebase/config";
 import React, { useContext, useState } from "react";
 import { CartContext } from "../context/CartContext";
 import { Navigate } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Checkout = () => {
