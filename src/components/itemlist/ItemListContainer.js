@@ -20,7 +20,7 @@ const ItemListContainer = () => {
           {datos.map((e) => (
             <div className="col-4 item mb-4">
               { biblioteca ? 
-              <LibraryItem nombre={e.nombre} img={e.img} desarrolladores={e.desarrolladores} fecha={e.fecha}/>
+              <LibraryItem id={e.id} nombre={e.nombre} img={e.img} desarrolladores={e.desarrolladores} fecha={e.fecha}/>
               :
               <ItemList
                 id={e.id}
