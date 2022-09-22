@@ -18,7 +18,6 @@ const ItemDetailContainer = () => {
     getDoc(itemRef)
       .then((doc) => {
         setItem({id: doc.id, ...doc.data()})
-        console.log("item", item);
       })
       .finally(() => {
         setLoading(false)

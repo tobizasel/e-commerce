@@ -1,5 +1,7 @@
 import React, {useContext} from "react";
+import { Link } from "react-router-dom";
 import { CartContext } from "../context/CartContext";
+
 
 const CartCard = ({ id, nombre, precio, cantidad, imagen }) => {
 
@@ -7,7 +9,7 @@ const CartCard = ({ id, nombre, precio, cantidad, imagen }) => {
 
 
   return (
-    <div className="container mt-5 cart__card">
+    <div className="container mt-5 cart__card ">
       
       <div className="col-2 card__container">
         <img src={imagen} alt={`${nombre} portada`}className="cart__img"></img>
@@ -26,7 +28,6 @@ const CartCard = ({ id, nombre, precio, cantidad, imagen }) => {
       </div>
 
       <div className="col-2 card__container">
-        <button className=" btn btn-primary">COMPRAR</button>
         <button className="btn btn-danger card__delete" onClick={() => eliminarItem(id)}><i className="fa-solid fa-trash-can"></i></button>
       </div>
     </div>

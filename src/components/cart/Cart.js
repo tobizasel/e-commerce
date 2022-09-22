@@ -3,6 +3,7 @@ import { CartContext } from '../context/CartContext'
 import './cart.scss'
 import CartCard from './CartCard'
 import CarritoVacio from './CarritoVacio'
+import { Link } from 'react-router-dom'
 
 const Cart = () => {
 
@@ -18,7 +19,7 @@ const Cart = () => {
             <CartCard id={item.id} nombre={item.nombre} precio={item.precio} cantidad={item.cantidad} imagen={item.img}/>
           ))}
           <div className='cart__botones'>
-          <button className='btn btn-outline-success mt-5 button__comprarTodo'>COMPRAR TODO</button>
+          <Link to ='/checkout' className='btn btn-outline-success mt-5 button__comprarTodo'>COMPRAR TODO</Link>
           <button className='btn btn-outline-danger mt-5 button__vaciar' onClick={vaciarCarrito}>VACIAR CARRITO</button>
           </div>
           </>

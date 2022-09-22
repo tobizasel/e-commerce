@@ -1,54 +1,16 @@
 import React from "react";
 import ItemList from "./ItemList";
-import { useEffect, useState } from "react";
 import { Spinner } from "reactstrap";
-import { useParams } from "react-router-dom";
-import { collection, getDocs, query, where } from "firebase/firestore";
-import { db } from "../../firebase/config";
 import "./itemlist.scss";
 import LibraryItem from "../library/LibraryItem";
+import {useProducts} from "../hooks/useProducts"
 
 const ItemListContainer = () => {
-  const [datos, setDatos] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [biblioteca, setBiblioteca] = useState(false)
-  let { generoId } = useParams();
-
   
-
-  useEffect(() => {
-    setLoading(true);
-
-    const productosRef = collection(db, "productos");
-
-    let q
-    
-
-    if (generoId === "library") {
-      q = query(productosRef, where("comprado", "==", true));
-      setBiblioteca(true)
-    } else {
-      q = generoId
-        ? query(productosRef, where("genero", "==", generoId))
-        : productosRef;
-        setBiblioteca(false)
-        
-    }
-
-    getDocs(q)
-      .then((res) => {
-        const productosDB = res.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-        }));
-        setDatos(productosDB);
-      })
-      .catch((err) => console.log(err))
-      .finally(() => setLoading(false));
-  }, [generoId]);
+  const {datos, loading, biblioteca} = useProducts();
 
   return (
-    <div className="container list__container mt-5">
+    <div className="container list__container my-5">
       {loading ? (
         <div className="row">
           <Spinner className="mx-auto" />
@@ -56,9 +18,9 @@ const ItemListContainer = () => {
       ) : (
         <div className="row list__container">
           {datos.map((e) => (
-            <div className="col-4">
+            <div className="col-4 item mb-4">
               { biblioteca ? 
-              <LibraryItem nombre={e.nombre} img={e.img} desarrolladores={e.desarrolladores}/>
+              <LibraryItem nombre={e.nombre} img={e.img} desarrolladores={e.desarrolladores} fecha={e.fecha}/>
               :
               <ItemList
                 id={e.id}

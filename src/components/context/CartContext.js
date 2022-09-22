@@ -1,6 +1,8 @@
 import { useState, useEffect, createContext } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Swal from "sweetalert2";
+
 
 export const CartContext = createContext();
 
@@ -37,11 +39,25 @@ export const CartProvider = ({ children }) => {
 
   };
 
+  const cartTotal = () => {
+      return cart.reduce((acc, item) => acc + item.cantidad * item.precio, 0)
+  }
+
+  const terminarCompra = (id) => {
+    Swal.fire({
+      icon: 'success',
+      title: 'Compra realizada',
+      text: 'Felicitaciones por tu compra!!',
+      footer: `Tu numero de compra:<b> ${id}</b>`
+    })
+    setCart([])
+  }
+
 
 
   return (
     <CartContext.Provider
-      value={{ cart, agregarCart, isInCart, vaciarCarrito, eliminarItem, cantidadCart }}
+      value={{ cart, agregarCart, isInCart, vaciarCarrito, eliminarItem, cantidadCart, cartTotal, terminarCompra }}
     >
       {children}
       <ToastContainer

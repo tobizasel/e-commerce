@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import Carrousel from "./Carrousel";
 import { Botones } from "./Botones";
 import { CartContext } from "../context/CartContext";
+import './itemdetail.scss'
 
 const ItemDetail = ({ item }) => {
   const {
@@ -22,7 +23,6 @@ const ItemDetail = ({ item }) => {
 
   const { cart, agregarCart, isInCart } = useContext(CartContext);
 
-    console.log("item detail: " , cart);
   const cambiarTexto = () => {
     if (precio === 0) {
       texto = "GRATIS";
@@ -41,7 +41,6 @@ const ItemDetail = ({ item }) => {
       img
     };
     agregarCart(selectedItem);
-    console.log("esta? " + isInCart(selectedItem.id));
   };
   
   cambiarTexto();
@@ -60,15 +59,18 @@ const ItemDetail = ({ item }) => {
         foto_3={carrusel_3}
       />
 
+      <div className="itemDetail__comprar mt-5">
         <Botones
           cantidad={cantidad}
           setCantidad={setCantidad}
           stock={stock}
           agregar={handleAdd}
           isInCart={isInCart(id)} 
-        />
-      
+      />
 
+        <p>Stock: {stock}</p>
+
+      </div>
     </div>
   );
 };
