@@ -1,7 +1,7 @@
 import { addDoc, collection, getDocs, writeBatch, query, where, documentId  } from "firebase/firestore";
 import { db } from "../../firebase/config";
 import React, { useContext, useState } from "react";
-import { CartContext } from "../context/CartContext";
+import { CartContext } from "../../context/CartContext";
 import { Navigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";

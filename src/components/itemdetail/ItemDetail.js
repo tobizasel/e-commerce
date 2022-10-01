@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import Carrousel from "./Carrousel";
 import { Botones } from "./Botones";
-import { CartContext } from "../context/CartContext";
+import { CartContext } from "../../context/CartContext";
 import './itemdetail.scss'
 
 const ItemDetail = ({ item }) => {

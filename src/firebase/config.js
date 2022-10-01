@@ -6,12 +6,12 @@ import { getFirestore } from 'firebase/firestore'
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyCg9yjdkHechQ6zcgMp5MTJ1NS6Fa7x784",
-  authDomain: "e-commerce-coder-9f0f0.firebaseapp.com",
-  projectId: "e-commerce-coder-9f0f0",
-  storageBucket: "e-commerce-coder-9f0f0.appspot.com",
-  messagingSenderId: "866957640660",
-  appId: "1:866957640660:web:d5bf08ecb3ea5ea1084c41"
+  apiKey: "AIzaSyDYVugp4m84mHlBG7cIZHsDnCuhmTyOZLk",
+  authDomain: "game-shop-coder.firebaseapp.com",
+  projectId: "game-shop-coder",
+  storageBucket: "game-shop-coder.appspot.com",
+  messagingSenderId: "758958486000",
+  appId: "1:758958486000:web:2d79e736957b771263ed35"
 };
 
 // Initialize Firebase

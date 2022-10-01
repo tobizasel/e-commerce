@@ -2,13 +2,18 @@ import { Link } from "react-router-dom";
 import Title from "./Title.js";
 import './nav.scss'
 import CartIcon from "./CartIcon.js";
+import { useContext } from "react";
+import { LoginContext } from "../../context/LoginContext.js";
 
 const Nav = () => {
+
+  const {user, logOut} = useContext(LoginContext)
+
   return (
     <nav className="navbar header__nav navbar-expand-lg bg-light">
       <div className="container-fluid">
         <Title />
-        <div className="collapse navbar-collapse" id="navbarSupportedContent">
+        <div className="collapse navbar-collapse d-flex align-items-center" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <Link to='/library' className="nav-item">
               <div className="nav-link active" aria-current="page" href="#">
@@ -32,18 +37,14 @@ const Nav = () => {
             </Link>
 
           </ul>
-          <form className="d-flex" role="search">
-            <input
-              className="form-control me-2"
-              type="search"
-              placeholder="GTA V"
-              aria-label="Search"
-            />
-            <button className="btn btn-outline-success" type="submit">
-              Buscar
+          <h6 className="mx-2 nav__bienvenida--titulo">Bienvenido {user.name}</h6>
+          <div className="nav__bienvenida">
+            
+            <button className="btn btn-outline-danger" onClick={logOut}>
+              Log Out
             </button>
             
-          </form>
+          </div>
         </div>
         <Link to={'/cart'}><CartIcon/></Link>
 
