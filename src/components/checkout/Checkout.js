@@ -42,6 +42,7 @@ const Checkout = () => {
     const sinStock = [];
 
     productos.docs.forEach((doc) => {
+      console.log("LLAMADO EN CHECKOUT")
       const itemInCart = cart.find((item) => item.id === doc.id)
 
       if (doc.data().stock >= itemInCart.cantidad) {

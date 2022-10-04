@@ -1,5 +1,5 @@
 import { addDoc, collection, getDocs } from "firebase/firestore";
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { db } from "../firebase/config";
@@ -11,11 +11,11 @@ export const LoginProvider = ({ children }) => {
   const usuariosRef = collection(db, "usuarios");
 
   const checkEmpty = (valor) => {
-    const datos = Object.values(valor)
+    const datos = Object.values(valor);
 
-    const vacio = datos.find((dato) => dato === "")
+    const vacio = datos.find((dato) => dato === "");
     console.log("vacio", vacio);
-  }
+  };
 
   const [user, setUser] = useState({
     mail: "",
@@ -24,8 +24,10 @@ export const LoginProvider = ({ children }) => {
     logged: false,
   });
 
-  getDocs(usuariosRef)
+  useEffect(() => {
+    getDocs(usuariosRef)
     .then((usuarios) => {
+      console.log("LLamado a la base de datos");
       const usuariosDB = usuarios.docs.map((usuario) => ({
         id: usuario.id,
         ...usuario.data(),
@@ -33,6 +35,8 @@ export const LoginProvider = ({ children }) => {
       setUsuarios(usuariosDB);
     })
     .catch((err) => console.log(err));
+  }, [])
+
 
   const checkLogin = (valor) => {
     const match = usuarios.find((usuario) => usuario.name === valor.name);
@@ -81,20 +85,22 @@ export const LoginProvider = ({ children }) => {
       } else {
         setValor({
           ...valor,
-          pass2: undefined,
+          pass2: null,
         });
       }
 
-      checkEmpty(valor)
+      checkEmpty(valor);
 
       addDoc(usuariosRef, valor)
-        .then(() => toast.success("Usuario registrado!"))
-        .finally(() => {
+        .then(() =>
           setUser({
             ...user,
             logged: true,
-          });
-          <Navigate to="/"/>
+          })
+        )
+        .finally(() => {
+          toast.success("Usuario registrado!");
+          <Navigate to="/" />;
         });
     } else {
       toast.error("El email ya esta registrado");

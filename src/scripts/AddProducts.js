@@ -1,20 +1,30 @@
-import { collection } from "firebase/firestore";
-import React from "react";
+import { addDoc, collection } from "firebase/firestore";
+import React, {useState} from "react";
+import { toast } from "react-toastify";
 import { db } from "../firebase/config";
 
 export const AddProducts = () => {
   const productosRef = collection(db, "productos");
 
   const [valores, setValores] = useState({
-    name: "",
-    mail: "",
-    pass: "",
-    pass2: "",
+    nombre: "",
+    precio: "",
+    genero: "",
+    stock: "",
+    desarrolladores: "",
+    img: "",
+    carrusel_1: "",
+    carrusel_2: "",
+    carrusel_3: "",
+    comprado: false,
   });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("antes de coso", valores);
+    
+    addDoc(productosRef, valores)
+        .then(() => toast.success("Producto agregado a la DataBase"))
+        .catch((err) => toast.error("Error: " + err))
   };
 
   const handleInput = (e) => {
@@ -27,7 +37,7 @@ export const AddProducts = () => {
   return (
     <div className="login__container">
       <section className="form-register">
-        <h4>Formulario Registro</h4>
+        <h4>Agregar productos</h4>
         <input
           className="controls"
           type="text"
@@ -104,7 +114,7 @@ export const AddProducts = () => {
         <input
           className="botons"
           type="submit"
-          value="Iniciar Sesion"
+          value="Agregar producto"
           onClick={handleSubmit}
         />
       </section>

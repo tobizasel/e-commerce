@@ -6,6 +6,7 @@ import Footer from "../components/footer/Footer";
 import Checkout from "../components/checkout/Checkout";
 import Nav from "../components/header/Nav";
 import ItemListContainer from "../components/itemlist/ItemListContainer";
+import { AddProducts } from "../scripts/AddProducts";
 
 const PrivateRoutes = () => {
   return (
@@ -20,6 +21,8 @@ const PrivateRoutes = () => {
         <Route path="/cart" element={<Cart />}></Route>
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/signin" element={<Navigate to="/"/>}/>
+        <Route path="/login" element={<Navigate to="/"/>}/>
+        <Route path="/panel" element={<AddProducts/>}></Route>
       </Routes>
 
       <Footer />

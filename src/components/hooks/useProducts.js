@@ -29,6 +29,7 @@ export const useProducts = () => {
 
     getDocs(q)
       .then((res) => {
+        console.log("LLAMADO EN USEPRODUCTS")
         const productosDB = res.docs.map((doc) => ({
           id: doc.id,
           ...doc.data(),
