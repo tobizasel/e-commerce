@@ -29,7 +29,7 @@ const Signin = () => {
   return (
     <div className="login__container">
       <section className="form-register">
-        <h4>Formulario Registro</h4>
+        <h4>Registrarme</h4>
         <input
           className="controls"
           type="text"

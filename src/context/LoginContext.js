@@ -10,11 +10,22 @@ export const LoginProvider = ({ children }) => {
   const [usuarios, setUsuarios] = useState();
   const usuariosRef = collection(db, "usuarios");
 
-  const checkEmpty = (valor) => {
+  const checkSignin = (valor) => {
     const datos = Object.values(valor);
-
     const vacio = datos.find((dato) => dato === "");
-    console.log("vacio", vacio);
+    console.log("checkSignin", valor);
+    
+    if (!vacio.length) {
+      toast.error("Debes completar todos los campos")
+      return false
+    }
+
+    if (!valor.mail.includes("@") || !valor.mail.includes(".") || valor.mail.includes(" ")) {
+      toast.error("Debes incluir una direccion de correo ")
+      return false
+    }
+
+    return true
   };
 
   const [user, setUser] = useState({
@@ -26,17 +37,16 @@ export const LoginProvider = ({ children }) => {
 
   useEffect(() => {
     getDocs(usuariosRef)
-    .then((usuarios) => {
-      console.log("LLamado a la base de datos");
-      const usuariosDB = usuarios.docs.map((usuario) => ({
-        id: usuario.id,
-        ...usuario.data(),
-      }));
-      setUsuarios(usuariosDB);
-    })
-    .catch((err) => console.log(err));
-  }, [])
-
+      .then((usuarios) => {
+        console.log("LLamado a la base de datos");
+        const usuariosDB = usuarios.docs.map((usuario) => ({
+          id: usuario.id,
+          ...usuario.data(),
+        }));
+        setUsuarios(usuariosDB);
+      })
+      .catch((err) => console.log(err));
+  }, []);
 
   const checkLogin = (valor) => {
     const match = usuarios.find((usuario) => usuario.name === valor.name);
@@ -55,7 +65,7 @@ export const LoginProvider = ({ children }) => {
       console.log(valor);
       return;
     }
-    console.log("Los datos coinciden");
+
     setUser({
       mail: valor.mail,
       name: valor.name,
@@ -74,8 +84,6 @@ export const LoginProvider = ({ children }) => {
   };
 
   const signin = (valor, setValor) => {
-    console.log(usuarios);
-    console.log("despues de coso", valor);
     const match = usuarios.find((usuario) => usuario.mail === valor.mail);
 
     if (!match) {
@@ -83,18 +91,18 @@ export const LoginProvider = ({ children }) => {
         toast.error("Las contraseñas no coinciden");
         return;
       } else {
-        setValor({
-          ...valor,
-          pass2: null,
-        });
+        if (!checkSignin(valor,setValor)) {
+          return;
+        }
       }
 
-      checkEmpty(valor);
 
       addDoc(usuariosRef, valor)
         .then(() =>
           setUser({
-            ...user,
+            mail: valor.mail,
+            name: valor.name,
+            pass: valor.pass,
             logged: true,
           })
         )

@@ -31,7 +31,7 @@ const Login = () => {
   return (
     <div className="login__container">
       <section className="form-register">
-        <h4>Formulario Registro</h4>
+        <h4>Iniciar Sesion</h4>
         <input
           className="controls"
           type="text"
