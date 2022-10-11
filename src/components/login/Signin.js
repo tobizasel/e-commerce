@@ -44,7 +44,7 @@ const Signin = () => {
           type="text"
           name="name"
           id="name"
-          placeholder="Ingrese su Nombre"
+          placeholder="Ingrese su Nombre Completo"
           required
           onChange={handleInput}
         />
@@ -76,7 +76,7 @@ const Signin = () => {
           onClick={handleSubmit}
         />
         <p>
-          <Link to="/login">¿Ya tengo cuenta?</Link>
+          <Link to="/login">Ya tengo cuenta</Link>
         </p>
       </section>
     </div>

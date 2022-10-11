@@ -19,7 +19,7 @@ const PrivateRoutes = () => {
         <Route path="/:generoId" element={<ItemListContainer />} />
         <Route path="/detail/:itemID" element={<ItemDetailContainer />} />
         <Route path="/cart" element={<Cart />}></Route>
-        <Route path="/checkout" element={<Checkout />} />
+        <Route path="/checkout" element={<Checkout/>} />
         <Route path="/signin" element={<Navigate to="/"/>}/>
         <Route path="/login" element={<Navigate to="/"/>}/>
         <Route path="/panel" element={<AddProducts/>}></Route>

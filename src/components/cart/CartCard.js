@@ -4,7 +4,7 @@ import { CartContext } from "../../context/CartContext";
 
 const CartCard = ({ id, nombre, precio, cantidad, imagen }) => {
 
-  const {eliminarItem} = useContext(CartContext)
+  const {eliminarItem, restarCant} = useContext(CartContext)
 
 
   return (
@@ -28,6 +28,11 @@ const CartCard = ({ id, nombre, precio, cantidad, imagen }) => {
 
       <div className="col-2 card__container">
         <button className="btn btn-danger card__delete" onClick={() => eliminarItem(id)}><i className="fa-solid fa-trash-can"></i></button>
+        <button className="btn btn-danger card__delete" onClick={restarCant}><i className="fa-solid fa-minus"></i></button>
+      </div>
+
+      <div className="col-2 card__container">
+       
       </div>
     </div>
   );

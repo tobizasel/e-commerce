@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import Carrousel from "./Carrousel";
 import { Botones } from "./Botones";
 import { CartContext } from "../../context/CartContext";
-import './itemdetail.scss'
+import "./itemdetail.scss";
 
 const ItemDetail = ({ item }) => {
   const {
@@ -11,7 +11,6 @@ const ItemDetail = ({ item }) => {
     precio,
     img,
     stock,
-    comprado,
     carrusel_1,
     carrusel_2,
     carrusel_3,
@@ -20,7 +19,7 @@ const ItemDetail = ({ item }) => {
   const [cantidad, setCantidad] = useState(1);
   let texto;
 
-  const {agregarCart, isInCart } = useContext(CartContext);
+  const { agregarCart, isInCart } = useContext(CartContext);
 
   const cambiarTexto = () => {
     if (precio === 0) {
@@ -36,16 +35,15 @@ const ItemDetail = ({ item }) => {
       nombre,
       precio,
       cantidad,
-      comprado,
-      img
+      img,
     };
     agregarCart(selectedItem);
   };
-  
+
   cambiarTexto();
 
   return (
-    <div className="container mt-5">
+    <div className="container mt-5 mb-5">
       <div className="row">
         <h2 className="col-10">{nombre}</h2>
         <h2 className="col-2">{texto}</h2>
@@ -64,11 +62,10 @@ const ItemDetail = ({ item }) => {
           setCantidad={setCantidad}
           stock={stock}
           agregar={handleAdd}
-          isInCart={isInCart(id)} 
-      />
+          isInCart={isInCart(id)}
+        />
 
         <p>Stock: {stock}</p>
-
       </div>
     </div>
   );

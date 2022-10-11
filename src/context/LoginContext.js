@@ -12,16 +12,19 @@ export const LoginProvider = ({ children }) => {
 
   const checkSignin = (valor) => {
     const datos = Object.values(valor);
-    const vacio = datos.find((dato) => dato === "");
-    console.log("checkSignin", valor);
-    
-    if (!vacio.length) {
+    let vacio = datos.find((dato) => dato === "");
+    if (vacio === undefined) {
+      vacio = 0
+    }
+
+
+    if (vacio !== 0) {
       toast.error("Debes completar todos los campos")
       return false
     }
 
     if (!valor.mail.includes("@") || !valor.mail.includes(".") || valor.mail.includes(" ")) {
-      toast.error("Debes incluir una direccion de correo ")
+      toast.error("Debes incluir una direccion de correo valida")
       return false
     }
 
@@ -32,7 +35,7 @@ export const LoginProvider = ({ children }) => {
     mail: "",
     name: "",
     pass: "",
-    logged: false,
+    logged: "",
   });
 
   useEffect(() => {

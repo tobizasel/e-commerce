@@ -7,7 +7,7 @@ import {useProducts} from "../hooks/useProducts"
 
 const ItemListContainer = () => {
   
-  const {datos, loading, biblioteca} = useProducts();
+  const {datos, loading} = useProducts();
 
   return (
     <div className="container list__container my-5">
@@ -19,9 +19,6 @@ const ItemListContainer = () => {
         <div className="row list__container">
           {datos.map((e) => (
             <div className="col-4 item mb-4">
-              { biblioteca ? 
-              <LibraryItem id={e.id} nombre={e.nombre} img={e.img} desarrolladores={e.desarrolladores} fecha={e.fecha}/>
-              :
               <ItemList
                 id={e.id}
                 nombre={e.nombre}
@@ -29,7 +26,8 @@ const ItemListContainer = () => {
                 desarrolladores={e.desarrolladores}
                 img={e.img}
                 stock={e.img}
-              />}
+                cantidad={e.cantidad}
+              />
             </div>
           ))}
         </div>

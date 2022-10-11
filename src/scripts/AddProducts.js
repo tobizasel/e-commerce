@@ -16,7 +16,6 @@ export const AddProducts = () => {
     carrusel_1: "",
     carrusel_2: "",
     carrusel_3: "",
-    comprado: false,
   });
 
   const handleSubmit = (e) => {

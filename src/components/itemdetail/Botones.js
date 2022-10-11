@@ -39,10 +39,12 @@ export const Botones = ({cantidad, setCantidad, stock, agregar, isInCart}) => {
 
 
   return (
+    <>
     <ButtonGroup>
     <Button className='btn-outline btn-lg' outline onClick={handlerRestar} disabled ={isInCart || isStock()}><b>-</b></Button>
     <Button className='btn-outline btn-lg' outline onClick={agregar} disabled={isInCart || isStock()}>{texto}</Button>
     <Button className='btn-outline btn-lg' outline onClick={handlerSumar} disabled  ={isInCart || isStock()}><b>+</b></Button>
     </ButtonGroup>
+    </>
   )
 }

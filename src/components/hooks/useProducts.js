@@ -6,8 +6,7 @@ import { db } from "../../firebase/config";
 export const useProducts = () => {
     const [datos, setDatos] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [biblioteca, setBiblioteca] = useState(false) 
-  
+
   let { generoId } = useParams();
 
   useEffect(() => {
@@ -15,32 +14,21 @@ export const useProducts = () => {
 
     const productosRef = collection(db, "productos");
 
-    let q = query(productosRef, where("comprado", "==", false));
-
-    if (generoId === "library") {
-      q = query(productosRef, where("comprado", "==", true));
-      setBiblioteca(true)
-    } else {
-      q = generoId
-        ? query(q, where("genero", "==", generoId))
-        : q;
-        setBiblioteca(false)
-    }
+    const q = generoId ? query(productosRef, where("genero", "==", generoId)) : productosRef
 
     getDocs(q)
       .then((res) => {
-        console.log("LLAMADO EN USEPRODUCTS")
         const productosDB = res.docs.map((doc) => ({
           id: doc.id,
           ...doc.data(),
         }));
         setDatos(productosDB);
       })
-      .catch((err) => console.log(err))
+      .catch((err) => alert(err))
       .finally(() => setLoading(false));
   }, [generoId]);
 
   return({
-    datos, loading, biblioteca
+    datos, loading
   })
 }

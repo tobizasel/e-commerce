@@ -2,7 +2,7 @@ import React from "react";
 import { Card, CardImg, CardBody, CardTitle, CardText } from "reactstrap";
 
 
-const LibraryItem = ({ nombre, desarrolladores, img, fecha }) => {
+const LibraryItem = ({ nombre, desarrolladores, img, fecha, cantidad }) => {
   
 
   return (
@@ -21,6 +21,9 @@ const LibraryItem = ({ nombre, desarrolladores, img, fecha }) => {
           <CardTitle tag="h5">{nombre}</CardTitle>
           <CardText>
             {desarrolladores}
+          </CardText>
+          <CardText>
+            x{cantidad}
           </CardText>
           <CardText>
             <small className="text-muted">{fecha}</small>

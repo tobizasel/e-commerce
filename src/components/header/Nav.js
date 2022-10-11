@@ -15,11 +15,6 @@ const Nav = () => {
         <Title />
         <div className="collapse navbar-collapse d-flex align-items-center" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            <Link to='/library' className="nav-item">
-              <div className="nav-link active" aria-current="page" href="#">
-                Biblioteca
-              </div>
-            </Link>
             <Link to='/accion' className="nav-item">
               <div className="nav-link active" aria-current="page" href="#">
                 Accion

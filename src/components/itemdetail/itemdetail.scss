@@ -8,3 +8,12 @@
         font-weight: bold;
     }
 }
+
+.itemDetail__comprado{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    line-height: 0.5;
+}

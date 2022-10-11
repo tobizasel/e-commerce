@@ -43,6 +43,11 @@ export const CartProvider = ({ children }) => {
       return cart.reduce((acc, item) => acc + item.cantidad * item.precio, 0)
   }
 
+  const restarCant = () => {
+    setCart( cart.filter((item) => item.cantidad -= 1 ))
+    toast.error("Producto eliminado");
+  }
+
   const terminarCompra = (id) => {
     Swal.fire({
       icon: 'success',
@@ -57,7 +62,7 @@ export const CartProvider = ({ children }) => {
 
   return (
     <CartContext.Provider
-      value={{ cart, agregarCart, isInCart, vaciarCarrito, eliminarItem, cantidadCart, cartTotal, terminarCompra }}
+      value={{ cart, agregarCart, isInCart, vaciarCarrito, eliminarItem, cantidadCart, cartTotal, terminarCompra, restarCant }}
     >
       {children}
       <ToastContainer
