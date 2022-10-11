@@ -48,8 +48,8 @@ export const LoginProvider = ({ children }) => {
         }));
         setUsuarios(usuariosDB);
       })
-      .catch((err) => console.log(err));
-  }, []);
+      .catch((err) => alert(err));
+  }, [user]);
 
   const checkLogin = (valor) => {
     const match = usuarios.find((usuario) => usuario.name === valor.name);
