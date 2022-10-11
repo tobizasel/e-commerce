@@ -59,9 +59,6 @@ const Login = () => {
           required
           onChange={handleInput}
         />
-        <p>
-          Estoy de acuerdo con <a href="#">Terminos y Condiciones</a>
-        </p>
         <input className="botons" type="submit" value="Iniciar Sesion" onClick={handleSubmit}/>
         <p>
           <Link to="/signin">¿No tengo cuenta?</Link>

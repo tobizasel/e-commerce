@@ -1,10 +1,10 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Card, CardBody, CardText, CardTitle, CardFooter, Button } from 'reactstrap'
 import { useNavigate } from 'react-router-dom'
 
 const ItemList = (props) => {
   
-  const {id, nombre, precio, desarrolladores,stock, img} = props;
+  const {id, nombre, precio, desarrolladores, img} = props;
 
 
   let navigate = useNavigate();

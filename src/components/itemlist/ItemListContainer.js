@@ -2,7 +2,6 @@ import React from "react";
 import ItemList from "./ItemList";
 import { Spinner } from "reactstrap";
 import "./itemlist.scss";
-import LibraryItem from "../library/LibraryItem";
 import {useProducts} from "../hooks/useProducts"
 
 const ItemListContainer = () => {
