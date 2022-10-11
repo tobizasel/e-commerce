@@ -38,20 +38,21 @@ export const LoginProvider = ({ children }) => {
     logged: "",
   });
 
-  useEffect(() => {
-    getDocs(usuariosRef)
-      .then((usuarios) => {
-        console.log("LLamado a la base de datos");
-        const usuariosDB = usuarios.docs.map((usuario) => ({
-          id: usuario.id,
-          ...usuario.data(),
-        }));
-        setUsuarios(usuariosDB);
-      })
-      .catch((err) => alert(err));
-  }, [user]);
+
 
   const checkLogin = (valor) => {
+
+    getDocs(usuariosRef)
+    .then((usuarios) => {
+      console.log("LLamado a la base de datos");
+      const usuariosDB = usuarios.docs.map((usuario) => ({
+        id: usuario.id,
+        ...usuario.data(),
+      }));
+      setUsuarios(usuariosDB);
+    })
+    .catch((err) => alert(err));
+
     const match = usuarios.find((usuario) => usuario.name === valor.name);
     console.log(match);
 
