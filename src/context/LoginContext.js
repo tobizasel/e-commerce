@@ -1,5 +1,5 @@
 import { addDoc, collection, getDocs } from "firebase/firestore";
-import { createContext, useEffect, useState } from "react";
+import { createContext, useState } from "react";
 import { Navigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { db } from "../firebase/config";
