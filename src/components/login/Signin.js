@@ -9,13 +9,13 @@ const Signin = () => {
   const [valores, setValores] = useState({
     name: "",
     mail: "",
+    lastname:"",
     pass: "",
     pass2: "",
   });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("antes de coso", valores);
     signin(valores, setValores);
   };
 
@@ -44,7 +44,16 @@ const Signin = () => {
           type="text"
           name="name"
           id="name"
-          placeholder="Ingrese su Nombre Completo"
+          placeholder="Ingrese su Nombre"
+          required
+          onChange={handleInput}
+        />
+          <input
+          className="controls"
+          type="text"
+          name="lastname"
+          id="lastname"
+          placeholder="Ingrese su Apellido"
           required
           onChange={handleInput}
         />

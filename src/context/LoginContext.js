@@ -8,104 +8,114 @@ export const LoginContext = createContext();
 
 export const LoginProvider = ({ children }) => {
   const [usuarios, setUsuarios] = useState();
+  const [userElegido, setUserElegido] = useState();
   const usuariosRef = collection(db, "usuarios");
 
   const checkSignin = (valor) => {
     const datos = Object.values(valor);
+
     let vacio = datos.find((dato) => dato === "");
     if (vacio === undefined) {
-      vacio = 0
+      vacio = 0;
+    } else if (vacio !== 0) {
+      toast.error("Debes completar todos los campos");
+      return false;
+    } if (
+      !valor.mail.includes("@") ||
+      !valor.mail.includes(".") ||
+      valor.mail.includes(" ")
+    ) {
+      toast.error("Debes incluir una direccion de correo valida");
+      return false;
+    } if (valor.pass.length < 4 || valor.pass.length > 12) {
+      toast.error("La contraseña debe tener entre 4 y 12 caracteres");
+      return false;
     }
 
-
-    if (vacio !== 0) {
-      toast.error("Debes completar todos los campos")
-      return false
-    }
-
-    if (!valor.mail.includes("@") || !valor.mail.includes(".") || valor.mail.includes(" ")) {
-      toast.error("Debes incluir una direccion de correo valida")
-      return false
-    }
-
-    return true
+    return true;
   };
 
   const [user, setUser] = useState({
     mail: "",
     name: "",
+    lastname: "",
     pass: "",
     logged: "",
   });
 
-
-
   const checkLogin = (valor) => {
-
     getDocs(usuariosRef)
-    .then((usuarios) => {
-      console.log("LLamado a la base de datos");
-      const usuariosDB = usuarios.docs.map((usuario) => ({
-        id: usuario.id,
-        ...usuario.data(),
-      }));
-      setUsuarios(usuariosDB);
-    })
-    .catch((err) => alert(err));
+      .then((usuariosBase) => {
+        const usuariosDB = usuariosBase.docs.map((usuario) => ({
+          id: usuario.id,
+          ...usuario.data(),
+        }));
+        setUsuarios(usuariosDB);
 
-    const match = usuarios.find((usuario) => usuario.name === valor.name);
-    console.log(match);
+        const match = usuariosDB.find((usuario) => usuario.mail === valor.mail);
+        if (!match) {
+          toast.error("El Email no esta registrado");
+          return;
+        } else if (match.name !== valor.name) {
+          toast.error("El nombre es incorrecto");
+          return;
+        } else if (match.pass !== valor.pass) {
+          toast.error("La contraseña es incorrecta");
+          return;
+        }
+        
+        setUser({
+          mail: valor.mail,
+          name: valor.name,
+          lastname: valor.lastname,
+          pass: valor.pass,
+          logged: true,
+        });
+      })
+      .catch((err) => console.log(err));
 
-    if (!match) {
-      toast.error("El nombre no existe");
-      console.log(valor);
-      return;
-    } else if (match.mail !== valor.mail) {
-      toast.error("El email es incorrecto");
-      console.log(valor);
-      return;
-    } else if (match.pass !== valor.pass) {
-      toast.error("La contraseña es incorrecta");
-      console.log(valor);
-      return;
-    }
 
-    setUser({
-      mail: valor.mail,
-      name: valor.name,
-      pass: valor.pass,
-      logged: true,
-    });
   };
 
   const logOut = () => {
     setUser({
       mail: "",
       name: "",
+      lastname: "",
       pass: "",
       logged: false,
     });
   };
 
   const signin = (valor, setValor) => {
+    getDocs(usuariosRef)
+      .then((usuarios) => {
+        const usuariosDB = usuarios.docs.map((usuario) => ({
+          id: usuario.id,
+          ...usuario.data(),
+        }));
+        setUsuarios(usuariosDB);
+      })
+      .catch((err) => alert(err));
+
     const match = usuarios.find((usuario) => usuario.mail === valor.mail);
 
     if (!match) {
       if (valor.pass !== valor.pass2) {
         toast.error("Las contraseñas no coinciden");
         return;
-      } else {
-        if (!checkSignin(valor,setValor)) {
-          return;
-        }
+      } else if (!checkSignin(valor, setValor)) {
+        return;
       }
 
+      console.log(valor);
 
       addDoc(usuariosRef, valor)
         .then(() =>
           setUser({
             mail: valor.mail,
             name: valor.name,
+            lastname: valor.lastname,
             pass: valor.pass,
             logged: true,
           })

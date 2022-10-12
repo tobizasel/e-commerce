@@ -23,7 +23,7 @@ const Checkout = () => {
   const dia = fecha.getDate();
   const mes = fecha.getMonth() + 1;
   const año = fecha.getFullYear();
-
+  console.log(user);
   const [valores, setValores] = useState({
     nombre:"",
     mail:"",
@@ -65,7 +65,6 @@ const Checkout = () => {
     const sinStock = [];
 
     productos.docs.forEach((doc) => {
-      console.log("LLAMADO EN CHECKOUT");
       const itemInCart = cart.find((item) => item.id === doc.id);
 
       if (doc.data().stock >= itemInCart.cantidad) {
@@ -124,7 +123,7 @@ const Checkout = () => {
         className="my-3 form-control"
         placeholder="Tu Nombre"
         onChange={handleInput}
-        value={user.name}
+        value={user.name + " " + user.lastname}
         disabled
         required
       ></input>

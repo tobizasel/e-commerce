@@ -1,32 +1,28 @@
-import React, {useContext, useState} from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { LoginContext } from "../../context/LoginContext";
-import './login.scss'
-
+import "./login.scss";
 
 const Login = () => {
+  const { checkLogin } = useContext(LoginContext);
 
-    const {checkLogin} = useContext(LoginContext)
+  const [valores, setValores] = useState({
+    name: "",
+    mail: "",
+    pass: "",
+  });
 
-    const [valores, setValores] = useState({
-        name: "",
-        mail: "",
-        pass: "",
-      });
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    checkLogin(valores);
+  };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        checkLogin({
-            ...valores
-        })
-    }
-
-    const handleInput = (e) => {
-        setValores({
-          ...valores,
-          [e.target.name]: e.target.value,
-        });
-      };
+  const handleInput = (e) => {
+    setValores({
+      ...valores,
+      [e.target.name]: e.target.value,
+    });
+  };
 
   return (
     <div className="login__container">
@@ -59,12 +55,17 @@ const Login = () => {
           required
           onChange={handleInput}
         />
-        <input className="botons" type="submit" value="Iniciar Sesion" onClick={handleSubmit}/>
+        <input
+          className="botons"
+          type="submit"
+          value="Iniciar Sesion"
+          onClick={handleSubmit}
+        />
         <p>
           <Link to="/signin">¿No tengo cuenta?</Link>
         </p>
       </section>
-      </div>
+    </div>
   );
 };
 
