@@ -8,7 +8,6 @@ export const LoginContext = createContext();
 
 export const LoginProvider = ({ children }) => {
   const [usuarios, setUsuarios] = useState();
-  const [userElegido, setUserElegido] = useState();
   const usuariosRef = collection(db, "usuarios");
 
   const checkSignin = (valor) => {
@@ -20,14 +19,16 @@ export const LoginProvider = ({ children }) => {
     } else if (vacio !== 0) {
       toast.error("Debes completar todos los campos");
       return false;
-    } if (
+    }
+    if (
       !valor.mail.includes("@") ||
       !valor.mail.includes(".") ||
       valor.mail.includes(" ")
     ) {
       toast.error("Debes incluir una direccion de correo valida");
       return false;
-    } if (valor.pass.length < 4 || valor.pass.length > 12) {
+    }
+    if (valor.pass.length < 4 || valor.pass.length > 12) {
       toast.error("La contraseña debe tener entre 4 y 12 caracteres");
       return false;
     }
@@ -63,7 +64,7 @@ export const LoginProvider = ({ children }) => {
           toast.error("La contraseña es incorrecta");
           return;
         }
-        
+
         setUser({
           mail: valor.mail,
           name: valor.name,
@@ -73,8 +74,6 @@ export const LoginProvider = ({ children }) => {
         });
       })
       .catch((err) => console.log(err));
-
-
   };
 
   const logOut = () => {
@@ -95,39 +94,38 @@ export const LoginProvider = ({ children }) => {
           ...usuario.data(),
         }));
         setUsuarios(usuariosDB);
+        const match = usuariosDB.find((usuario) => usuario.mail === valor.mail);
+
+        if (!match) {
+          if (valor.pass !== valor.pass2) {
+            toast.error("Las contraseñas no coinciden");
+            return;
+          } else if (!checkSignin(valor, setValor)) {
+            return;
+          }
+
+          console.log(valor);
+
+          addDoc(usuariosRef, valor)
+            .then(() =>
+              setUser({
+                mail: valor.mail,
+                name: valor.name,
+                lastname: valor.lastname,
+                pass: valor.pass,
+                logged: true,
+              })
+            )
+            .finally(() => {
+              toast.success("Usuario registrado!");
+              <Navigate to="/" />;
+            });
+        } else {
+          toast.error("El email ya esta registrado");
+          return;
+        }
       })
       .catch((err) => alert(err));
-
-    const match = usuarios.find((usuario) => usuario.mail === valor.mail);
-
-    if (!match) {
-      if (valor.pass !== valor.pass2) {
-        toast.error("Las contraseñas no coinciden");
-        return;
-      } else if (!checkSignin(valor, setValor)) {
-        return;
-      }
-
-      console.log(valor);
-
-      addDoc(usuariosRef, valor)
-        .then(() =>
-          setUser({
-            mail: valor.mail,
-            name: valor.name,
-            lastname: valor.lastname,
-            pass: valor.pass,
-            logged: true,
-          })
-        )
-        .finally(() => {
-          toast.success("Usuario registrado!");
-          <Navigate to="/" />;
-        });
-    } else {
-      toast.error("El email ya esta registrado");
-      return;
-    }
   };
 
   return (

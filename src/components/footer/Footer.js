@@ -5,15 +5,24 @@ import "./footer.scss";
 const Footer = () => {
   return (
     <footer className="footer">
-      <div clasname="footer__icons">
-        <a className="footer__icons--link" href="https://es-la.facebook.com/"><i className="fa-brands fa-facebook"></i></a>
-        <a className="footer__icons--link" href="https://www.instagram.com/"><i className="fa-brands fa-instagram"></i></a>
-        <a className="footer__icons--link" href="https://web.whatsapp.com/"><i className="fa-brands fa-whatsapp"></i></a>
-        <a className="footer__icons--link" href="https://twitter.com/"><i className="fa-brands fa-twitter"></i></a>
-        <a className="footer__icons--link" href="https://mail.google.com/"><i className="fa-regular fa-envelope"></i></a>
+      <div className="footer__icons">
+        <a className="footer__icons--link" href="https://es-la.facebook.com/">
+          <i className="fa-brands fa-facebook footer__icons--icons"></i>
+        </a>
+        <a className="footer__icons--link" href="https://www.instagram.com/">
+          <i className="fa-brands fa-instagram"></i>
+        </a>
+        <a className="footer__icons--link" href="https://web.whatsapp.com/">
+          <i className="fa-brands fa-whatsapp"></i>
+        </a>
+        <a className="footer__icons--link" href="https://twitter.com/">
+          <i className="fa-brands fa-twitter"></i>
+        </a>
+        <a className="footer__icons--link" href="https://mail.google.com/">
+          <i className="fa-regular fa-envelope"></i>
+        </a>
       </div>
       <div className="footer__info">
-
         <div className="footer__links">
           <h2>Productos</h2>
           <Link to="/accion" className="footer__link">
