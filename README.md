@@ -6,4 +6,5 @@ Game Shop es un simulador de una tienda de videojuegos online usando la base de 
 
 ## Deploy en Netlify
 
-https://gameshopcoder.netlify.app/login
+https://gameshopcoder.netlify.app/
+
