@@ -7,7 +7,6 @@ import { db } from "../firebase/config";
 export const LoginContext = createContext();
 
 export const LoginProvider = ({ children }) => {
-  const [usuarios, setUsuarios] = useState();
   const usuariosRef = collection(db, "usuarios");
 
   const checkSignin = (valor) => {
