@@ -50,7 +50,6 @@ export const LoginProvider = ({ children }) => {
           id: usuario.id,
           ...usuario.data(),
         }));
-        setUsuarios(usuariosDB);
 
         const match = usuariosDB.find((usuario) => usuario.mail === valor.mail);
         if (!match) {
@@ -92,7 +91,6 @@ export const LoginProvider = ({ children }) => {
           id: usuario.id,
           ...usuario.data(),
         }));
-        setUsuarios(usuariosDB);
         const match = usuariosDB.find((usuario) => usuario.mail === valor.mail);
 
         if (!match) {
